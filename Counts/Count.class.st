@@ -16,5 +16,7 @@ Count >> value [
 
 { #category : #accessing }
 Count >> value: aValue [
+	"Set my value to aValue."
+	
 	value := aValue 
 ]
