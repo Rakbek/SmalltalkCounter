@@ -21,11 +21,17 @@ Count >> increment [
  "Increment my value. Subclasses must implment this."
 ]
 
+{ #category : #'initialization-release' }
+Count >> initialize [
+	"Initialize my value to the reset value."
+	self reset
+]
+
 { #category : #counting }
 Count >> reset [ 
 	"Restore my value to its original state."
 	
-	value := resetValue 
+	self value: resetValue 
 ]
 
 { #category : #accessing }
@@ -51,7 +57,9 @@ Count >> value [
 
 { #category : #accessing }
 Count >> value: aValue [
-	"Set my value to aValue."
+"Set my value to aValue.
+Notify my dependents i changed my value."
 	
-	value := aValue 
+	value := aValue.
+	self changed: #value
 ]
